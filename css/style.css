@@ -173,6 +173,62 @@ img {
 }
 
 
+/* --- Nav Dropdown --- */
+.nav__item {
+  position: relative;
+}
+
+.nav__item--dropdown {
+  position: relative;
+}
+
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-white);
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(4px);
+  transition: opacity var(--transition-fast), visibility var(--transition-fast), transform var(--transition-fast);
+  z-index: 100;
+}
+
+.nav__item--dropdown:hover .nav__dropdown,
+.nav__item--dropdown:focus-within .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav__dropdown li {
+  display: block;
+}
+
+.nav__link--sub {
+  display: block;
+  padding: 8px 24px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.nav__link--sub::after {
+  display: none;
+}
+
+.nav__link--sub:hover {
+  color: var(--color-accent);
+  background-color: var(--color-bg);
+}
+
+
 /* --- Hero Section --- */
 .hero {
   min-height: 100vh;
@@ -183,6 +239,26 @@ img {
   text-align: center;
   padding: 0 24px;
   position: relative;
+}
+
+.hero__image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 32px;
+  flex-shrink: 0;
+}
+
+.hero__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    160deg,
+    hsl(30, 10%, 35%) 0%,
+    hsl(30, 15%, 55%) 50%,
+    hsl(30, 10%, 45%) 100%
+  );
 }
 
 .hero__content {
@@ -241,6 +317,10 @@ img {
 /* --- Work Section --- */
 .work {
   background-color: var(--color-bg);
+}
+
+.work--alt {
+  background-color: var(--color-bg-alt);
 }
 
 .work__grid {
@@ -320,7 +400,7 @@ img {
 }
 
 .work__info {
-  padding: 20px 4px;
+  padding: 20px 16px;
 }
 
 .work__title {
@@ -688,6 +768,30 @@ body.modal-open {
     letter-spacing: 0.08em;
   }
 
+  .nav__dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 4px 0 0 16px;
+    min-width: 0;
+  }
+
+  .nav__link--sub {
+    padding: 6px 0;
+    font-size: 0.875rem;
+  }
+
+  .nav__link--sub:hover {
+    background-color: transparent;
+  }
+
+  .nav__item--dropdown > .nav__link {
+    margin-bottom: 4px;
+  }
+
   .work__grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -731,6 +835,6 @@ body.modal-open {
   }
 
   .work__info {
-    padding: 16px 2px;
+    padding: 16px 12px;
   }
 }

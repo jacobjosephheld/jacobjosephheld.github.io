@@ -39,8 +39,12 @@
 
 
   // --- Navigation: Active Section Highlight ---
+  var workSectionIds = ['filmmaking', 'theatre', 'commercial'];
+  var workParentLink = document.querySelector('.nav__item--dropdown > .nav__link');
+
   function updateActiveSection() {
     const scrollPos = window.scrollY + window.innerHeight / 3;
+    var activeId = null;
 
     sections.forEach(function (section) {
       const top = section.offsetTop;
@@ -48,14 +52,28 @@
       const id = section.getAttribute('id');
 
       if (scrollPos >= top && scrollPos < top + height) {
-        navLinkEls.forEach(function (link) {
-          link.classList.remove('active');
-          if (link.getAttribute('data-section') === id) {
-            link.classList.add('active');
-          }
-        });
+        activeId = id;
       }
     });
+
+    // Clear all active states
+    navLinkEls.forEach(function (link) {
+      link.classList.remove('active');
+    });
+
+    if (activeId) {
+      // Highlight matching sub-links
+      navLinkEls.forEach(function (link) {
+        if (link.getAttribute('data-section') === activeId) {
+          link.classList.add('active');
+        }
+      });
+
+      // Highlight "Work" parent link when in any work section
+      if (workParentLink && workSectionIds.indexOf(activeId) !== -1) {
+        workParentLink.classList.add('active');
+      }
+    }
   }
 
   window.addEventListener('scroll', updateActiveSection, { passive: true });

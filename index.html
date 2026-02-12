@@ -22,7 +22,14 @@
         <span></span>
       </button>
       <ul class="nav__links" id="navLinks">
-        <li><a href="#work" class="nav__link" data-section="work">Work</a></li>
+        <li class="nav__item nav__item--dropdown">
+          <a href="#filmmaking" class="nav__link" data-section="filmmaking">Work</a>
+          <ul class="nav__dropdown">
+            <li><a href="#filmmaking" class="nav__link nav__link--sub" data-section="filmmaking">Filmmaking</a></li>
+            <li><a href="#theatre" class="nav__link nav__link--sub" data-section="theatre">Theatre</a></li>
+            <li><a href="#commercial" class="nav__link nav__link--sub" data-section="commercial">Commercial</a></li>
+          </ul>
+        </li>
         <li><a href="#about" class="nav__link" data-section="about">About</a></li>
         <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
       </ul>
@@ -31,24 +38,27 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
+    <div class="hero__image anim-fade-up">
+      <div class="hero__image-placeholder"></div>
+    </div>
     <div class="hero__content">
       <h1 class="hero__title anim-fade-up">Jacob Joseph Held</h1>
       <p class="hero__subtitle anim-fade-up anim-delay-1">Director</p>
     </div>
-    <a href="#work" class="hero__scroll anim-fade-up anim-delay-2" aria-label="Scroll to work">
+    <a href="#filmmaking" class="hero__scroll anim-fade-up anim-delay-2" aria-label="Scroll to work">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
     </a>
   </section>
 
-  <!-- Work Section -->
-  <section class="section work" id="work">
+  <!-- Filmmaking Section -->
+  <section class="section work" id="filmmaking">
     <div class="container">
-      <h2 class="section__title anim-reveal">Selected Work</h2>
+      <h2 class="section__title anim-reveal">Filmmaking</h2>
       <div class="work__grid">
 
-        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch The Silence Between" data-vimeo="76979871" data-title="The Silence Between" data-year="2024" data-description="A feature-length documentary exploring the unspoken bonds between three generations of a rural family. Shot over two years across the American Midwest, the film captures fleeting moments of connection and solitude." data-credits="Director: Jacob Joseph Held | Cinematographer: Elena Vasquez | Editor: Marcus Chen | Producer: Sarah Lindström">
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch The Silence Between" data-vimeo="76979871" data-title="The Silence Between" data-year="2024" data-description="A feature-length documentary exploring the unspoken bonds between three generations of a rural family. Shot over two years across the American Midwest, the film captures fleeting moments of connection and solitude." data-credits="Director: Jacob Joseph Held | Cinematographer: Elena Vasquez | Editor: Marcus Chen | Producer: Sarah Lindstr&ouml;m">
           <div class="work__thumbnail">
             <div class="work__thumbnail-placeholder" style="--hue: 220"></div>
             <div class="work__overlay">
@@ -59,7 +69,7 @@
           </div>
           <div class="work__info">
             <h3 class="work__title">The Silence Between</h3>
-            <p class="work__meta">Documentary &middot; 2024</p>
+            <p class="work__meta">Feature Documentary &middot; 2024</p>
           </div>
         </article>
 
@@ -104,26 +114,11 @@
           </div>
           <div class="work__info">
             <h3 class="work__title">What Remains</h3>
-            <p class="work__meta">Documentary &middot; 2022</p>
+            <p class="work__meta">Short Documentary &middot; 2022</p>
           </div>
         </article>
 
-        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Bloom" data-vimeo="255587892" data-title="Bloom" data-year="2021" data-description="A music video for Icelandic artist Sólveig, blending practical effects with in-camera techniques to create a surreal journey through memory and loss." data-credits="Director: Jacob Joseph Held | Artist: Sólveig | Producer: Yuki Tanaka | Production Design: Camille Renard">
-          <div class="work__thumbnail">
-            <div class="work__thumbnail-placeholder" style="--hue: 330"></div>
-            <div class="work__overlay">
-              <span class="work__play">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              </span>
-            </div>
-          </div>
-          <div class="work__info">
-            <h3 class="work__title">Bloom</h3>
-            <p class="work__meta">Music Video &middot; 2021</p>
-          </div>
-        </article>
-
-        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Still, Life" data-vimeo="231266255" data-title="Still, Life" data-year="2020" data-description="A short film exploring the quiet rituals of an elderly couple in rural Japan. Shot on 16mm film, the piece is a study in patience, texture, and the passage of time." data-credits="Director: Jacob Joseph Held | Writer: Jacob Joseph Held & Aiko Tanabe | Cinematographer: Kai Nishimura | Cast: Takeshi Yamamoto, Yuko Shimizu">
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Still, Life" data-vimeo="231266255" data-title="Still, Life" data-year="2020" data-description="A short film exploring the quiet rituals of an elderly couple in rural Japan. Shot on 16mm film, the piece is a study in patience, texture, and the passage of time." data-credits="Director: Jacob Joseph Held | Writer: Jacob Joseph Held &amp; Aiko Tanabe | Cinematographer: Kai Nishimura | Cast: Takeshi Yamamoto, Yuko Shimizu">
           <div class="work__thumbnail">
             <div class="work__thumbnail-placeholder" style="--hue: 140"></div>
             <div class="work__overlay">
@@ -135,6 +130,176 @@
           <div class="work__info">
             <h3 class="work__title">Still, Life</h3>
             <p class="work__meta">Short Film &middot; 2020</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch The Orchard" data-vimeo="255587892" data-title="The Orchard" data-year="2021" data-description="A lyrical short film about a woman returning to her childhood home to sell the family property. As she walks the grounds one last time, memories surface in fragments of light and sound. Shot on 35mm." data-credits="Director: Jacob Joseph Held | Writer: Jacob Joseph Held | Cinematographer: Elena Vasquez | Cast: Isabelle Morin | Producer: David Kwan">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 95"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">The Orchard</h3>
+            <p class="work__meta">Short Film &middot; 2021</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Theatre Section -->
+  <section class="section work work--alt" id="theatre">
+    <div class="container">
+      <h2 class="section__title anim-reveal">Theatre</h2>
+      <div class="work__grid">
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch The Weight of Light" data-vimeo="76979871" data-title="The Weight of Light" data-year="2025" data-description="A devised theatre piece exploring grief and memory through movement, projection, and live sound. Performed at The Public Theater, New York. The production fuses documentary footage with live performance to blur the line between stage and screen." data-credits="Director: Jacob Joseph Held | Playwright: Nadia Osei | Set Design: Tomoko Arai | Lighting: Rhys Patterson | Cast: Ensemble">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 15"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">The Weight of Light</h3>
+            <p class="work__meta">Devised Theatre &middot; 2025</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Cartography" data-vimeo="305163868" data-title="Cartography" data-year="2023" data-description="A multimedia stage adaptation exploring displacement and belonging through the stories of five immigrants. Commissioned by the Young Vic, London. Integrates live-feed camera work and real-time projection mapping into the theatrical space." data-credits="Director: Jacob Joseph Held | Playwright: Amira Hassan | Video Design: Jacob Joseph Held | Lighting: Sophie Delacroix | Cast: Rotating Ensemble">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 55"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Cartography</h3>
+            <p class="work__meta">Stage Production &middot; 2023</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Afterimage" data-vimeo="394276274" data-title="Afterimage" data-year="2021" data-description="An experimental performance piece combining live cinema, choreography, and original score. Premiered at BAM Next Wave Festival. A meditation on perception and the persistence of vision." data-credits="Director: Jacob Joseph Held | Choreographer: Lina Morales | Composer: Amara Okafor | Performers: Brooklyn Dance Collective">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 290"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Afterimage</h3>
+            <p class="work__meta">Performance &middot; 2021</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial Section -->
+  <section class="section work" id="commercial">
+    <div class="container">
+      <h2 class="section__title anim-reveal">Commercial</h2>
+      <div class="work__grid">
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Bloom" data-vimeo="255587892" data-title="Bloom" data-year="2021" data-description="A music video for Icelandic artist S&oacute;lveig, blending practical effects with in-camera techniques to create a surreal journey through memory and loss." data-credits="Director: Jacob Joseph Held | Artist: S&oacute;lveig | Producer: Yuki Tanaka | Production Design: Camille Renard">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 330"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Bloom</h3>
+            <p class="work__meta">Music Video &middot; S&oacute;lveig &middot; 2021</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Hollow Ground" data-vimeo="347119375" data-title="Hollow Ground" data-year="2023" data-description="A performance-driven music video for London-based artist ROOK. Shot in a single continuous take inside an abandoned warehouse, the piece builds from stillness to raw intensity over four minutes." data-credits="Director: Jacob Joseph Held | Artist: ROOK | Cinematographer: Kai Nishimura | Choreographer: Lina Morales | Producer: Yuki Tanaka">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 10"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Hollow Ground</h3>
+            <p class="work__meta">Music Video &middot; ROOK &middot; 2023</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Aesop — Ritual" data-vimeo="76979871" data-title="Aesop — Ritual" data-year="2024" data-description="A brand film for Aesop exploring the rituals of daily care. Shot in natural light across three homes, the piece moves at the pace of its subjects, finding beauty in routine gestures." data-credits="Director: Jacob Joseph Held | Brand: Aesop | Agency: In-House | Cinematographer: Kai Nishimura | Producer: Sarah Lindstr&ouml;m">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 45"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Aesop &mdash; Ritual</h3>
+            <p class="work__meta">Brand Film &middot; 2024</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Peripheral" data-vimeo="231266255" data-title="Peripheral" data-year="2024" data-description="A split-screen music video for electronic duo Parallel Lines. Two mirrored narratives unfold simultaneously, converging in the final moments. Mixed-media approach combining 16mm film with digital compositing." data-credits="Director: Jacob Joseph Held | Artist: Parallel Lines | Cinematographer: Elena Vasquez | Editor: Marcus Chen | VFX: Studio Reflex">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 200"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Peripheral</h3>
+            <p class="work__meta">Music Video &middot; Parallel Lines &middot; 2024</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Ace & Tate — Seen" data-vimeo="305163868" data-title="Ace & Tate — Seen" data-year="2023" data-description="A campaign film for Ace & Tate eyewear featuring real people in their creative workspaces. A quiet study of focus and craft, letting the environments speak as much as the subjects." data-credits="Director: Jacob Joseph Held | Brand: Ace &amp; Tate | Agency: Studio Build | Cinematographer: Elena Vasquez | Editor: Lena Johansson">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 170"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Ace & Tate &mdash; Seen</h3>
+            <p class="work__meta">Campaign &middot; 2023</p>
+          </div>
+        </article>
+
+        <article class="work__card anim-reveal" tabindex="0" role="button" aria-label="Watch Patagonia — Watershed" data-vimeo="394276274" data-title="Patagonia — Watershed" data-year="2022" data-description="A documentary-style commercial for Patagonia following water conservationists along the Colorado River. Blends advocacy storytelling with brand messaging, shot over two weeks on location." data-credits="Director: Jacob Joseph Held | Brand: Patagonia | Agency: In-House | Cinematographer: Jacob Joseph Held | Producer: David Kwan">
+          <div class="work__thumbnail">
+            <div class="work__thumbnail-placeholder" style="--hue: 120"></div>
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+            </div>
+          </div>
+          <div class="work__info">
+            <h3 class="work__title">Patagonia &mdash; Watershed</h3>
+            <p class="work__meta">Documentary Commercial &middot; 2022</p>
           </div>
         </article>
 
