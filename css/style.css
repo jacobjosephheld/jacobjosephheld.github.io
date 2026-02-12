@@ -413,16 +413,6 @@ img {
   max-width: 480px;
 }
 
-/* Cards without video: no play button overlay, default cursor */
-.work__card--no-video {
-  cursor: default;
-}
-
-.work__card--no-video:hover {
-  transform: none;
-  box-shadow: none;
-}
-
 
 /* --- About Section --- */
 .about {

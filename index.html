@@ -129,9 +129,17 @@
       <h2 class="section__title anim-reveal">Theatre</h2>
       <div class="work__grid work__grid--single">
 
-        <article class="work__card work__card--no-video anim-reveal" tabindex="0" data-title="Fear and Misery in the Third Reich" data-year="2026" data-description="Fear and Misery of the Third Reich is a collection of short plays written by Bertolt Brecht, portraying how fascism takes hold through fear, silence, and everyday compliance. In this first-of-its-kind adaptation, we imagine these plays set today in Trump's America. This new production treats Brecht not only as history, but also as a warning to us all. The performance consists of 7 short plays creating a dramatic 45-minute experience that immerses the audience into a world of fear, betrayal, bureaucracy and violence." data-credits="Director: J. Joseph Held">
+        <article class="work__card anim-reveal" tabindex="0" role="button" data-title="Fear and Misery in the Third Reich" data-year="2026" data-description="Fear and Misery of the Third Reich is a collection of short plays written by Bertolt Brecht, portraying how fascism takes hold through fear, silence, and everyday compliance. In this first-of-its-kind adaptation, we imagine these plays set today in Trump's America. This new production treats Brecht not only as history, but also as a warning to us all. The performance consists of 7 short plays creating a dramatic 45-minute experience that immerses the audience into a world of fear, betrayal, bureaucracy and violence." data-credits="Director: J. Joseph Held">
           <div class="work__thumbnail">
             <img src="assets/images/brecht_still.jpg" alt="Fear and Misery in the Third Reich — still" class="work__thumbnail-img">
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </div>
           </div>
           <div class="work__info">
             <h3 class="work__title">Fear and Misery in the Third Reich</h3>
@@ -149,9 +157,17 @@
       <h2 class="section__title anim-reveal">Commercial</h2>
       <div class="work__grid work__grid--single">
 
-        <article class="work__card work__card--no-video anim-reveal" tabindex="0" data-title="Trapped Inside A Softly Decaying House" data-year="2026" data-description="A commercial piece for Viliana Koureva." data-credits="Director: Jacob Joseph Held">
+        <article class="work__card anim-reveal" tabindex="0" role="button" data-title="Trapped Inside A Softly Decaying House" data-year="2026" data-description="A commercial piece for Viliana Koureva." data-credits="Director: Jacob Joseph Held">
           <div class="work__thumbnail">
             <img src="assets/images/decaying_still.jpg" alt="Trapped Inside A Softly Decaying House — still" class="work__thumbnail-img">
+            <div class="work__overlay">
+              <span class="work__play">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </div>
           </div>
           <div class="work__info">
             <h3 class="work__title">Trapped Inside A Softly Decaying House</h3>
@@ -257,6 +273,7 @@
       </button>
       <div class="modal__video">
         <iframe id="modalIframe" src="" title="Video player" style="border:none" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <img id="modalImage" src="" alt="" class="modal__img-fallback" style="display:none; width:100%; height:100%; object-fit:cover;">
       </div>
       <div class="modal__details">
         <h3 class="modal__title" id="modalTitle"></h3>

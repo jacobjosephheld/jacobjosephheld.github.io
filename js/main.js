@@ -15,6 +15,7 @@
   var modalBackdrop = document.getElementById('modalBackdrop');
   var modalClose = document.getElementById('modalClose');
   var modalIframe = document.getElementById('modalIframe');
+  var modalImage = document.getElementById('modalImage');
   var modalVideo = document.querySelector('.modal__video');
   var modalTitle = document.getElementById('modalTitle');
   var modalYear = document.getElementById('modalYear');
@@ -156,9 +157,20 @@
         '?autoplay=1&rel=0';
       modalIframe.title = title + ' — Video Player';
       modalVideo.style.display = '';
+      modalIframe.style.display = '';
+      modalImage.style.display = 'none';
     } else {
+      var cardImg = card.querySelector('.work__thumbnail-img');
       modalIframe.src = '';
-      modalVideo.style.display = 'none';
+      modalIframe.style.display = 'none';
+      if (cardImg) {
+        modalImage.src = cardImg.src;
+        modalImage.alt = cardImg.alt;
+        modalImage.style.display = 'block';
+        modalVideo.style.display = '';
+      } else {
+        modalVideo.style.display = 'none';
+      }
     }
 
     modalTitle.textContent = title;
@@ -213,8 +225,11 @@
   function closeModal() {
     modal.classList.remove('active');
     document.body.classList.remove('modal-open');
-    // Stop video playback
+    // Stop video playback and clear image
     modalIframe.src = '';
+    modalIframe.style.display = '';
+    modalImage.src = '';
+    modalImage.style.display = 'none';
     modalVideo.style.display = '';
 
     // Return focus to the card that triggered the modal
