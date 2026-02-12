@@ -321,7 +321,7 @@ img {
 
 .work__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
 }
 
@@ -344,19 +344,14 @@ img {
   background-color: var(--color-bg-alt);
 }
 
-.work__thumbnail-placeholder {
+.work__thumbnail-img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    hsl(var(--hue), 15%, 30%) 0%,
-    hsl(var(--hue), 20%, 50%) 50%,
-    hsl(var(--hue), 15%, 40%) 100%
-  );
+  object-fit: cover;
   transition: transform var(--transition-slow);
 }
 
-.work__card:hover .work__thumbnail-placeholder {
+.work__card:hover .work__thumbnail-img {
   transform: scale(1.05);
 }
 
@@ -410,6 +405,22 @@ img {
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
   letter-spacing: 0.03em;
+}
+
+/* Single-card grid: limit card width so it doesn't stretch full-width */
+.work__grid--single {
+  grid-template-columns: 1fr;
+  max-width: 480px;
+}
+
+/* Cards without video: no play button overlay, default cursor */
+.work__card--no-video {
+  cursor: default;
+}
+
+.work__card--no-video:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 
@@ -664,6 +675,44 @@ img {
   border-top: 1px solid var(--color-border);
 }
 
+.modal__links {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.modal__ext-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  padding: 6px 0;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.modal__ext-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-accent);
+  opacity: 0.4;
+  transition: opacity var(--transition-fast);
+}
+
+.modal__ext-link:hover {
+  color: var(--color-accent-hover);
+}
+
+.modal__ext-link:hover::after {
+  opacity: 1;
+}
+
 
 /* --- Scroll Animations --- */
 .anim-fade-up {
@@ -695,10 +744,8 @@ img {
 /* Stagger delays for grid items */
 .work__card:nth-child(1) { transition-delay: 0s; }
 .work__card:nth-child(2) { transition-delay: 0.1s; }
-.work__card:nth-child(3) { transition-delay: 0.2s; }
-.work__card:nth-child(4) { transition-delay: 0.1s; }
-.work__card:nth-child(5) { transition-delay: 0.2s; }
-.work__card:nth-child(6) { transition-delay: 0.3s; }
+.work__card:nth-child(3) { transition-delay: 0.05s; }
+.work__card:nth-child(4) { transition-delay: 0.15s; }
 
 /* Body scroll lock for modal */
 body.modal-open {
@@ -710,11 +757,6 @@ body.modal-open {
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .work__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
   .about__grid {
     gap: 48px;
   }

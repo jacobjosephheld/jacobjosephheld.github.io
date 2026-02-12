@@ -6,20 +6,22 @@
   'use strict';
 
   // --- DOM Elements ---
-  const nav = document.getElementById('nav');
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  const navLinkEls = document.querySelectorAll('.nav__link');
-  const sections = document.querySelectorAll('section[id]');
-  const modal = document.getElementById('modal');
-  const modalBackdrop = document.getElementById('modalBackdrop');
-  const modalClose = document.getElementById('modalClose');
-  const modalIframe = document.getElementById('modalIframe');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalYear = document.getElementById('modalYear');
-  const modalDescription = document.getElementById('modalDescription');
-  const modalCredits = document.getElementById('modalCredits');
-  const workCards = document.querySelectorAll('.work__card');
+  var nav = document.getElementById('nav');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  var navLinkEls = document.querySelectorAll('.nav__link');
+  var sections = document.querySelectorAll('section[id]');
+  var modal = document.getElementById('modal');
+  var modalBackdrop = document.getElementById('modalBackdrop');
+  var modalClose = document.getElementById('modalClose');
+  var modalIframe = document.getElementById('modalIframe');
+  var modalVideo = document.querySelector('.modal__video');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalYear = document.getElementById('modalYear');
+  var modalDescription = document.getElementById('modalDescription');
+  var modalCredits = document.getElementById('modalCredits');
+  var modalLinks = document.getElementById('modalLinks');
+  var workCards = document.querySelectorAll('.work__card');
 
   // Track which card opened the modal for focus return
   var lastFocusedCard = null;
@@ -43,13 +45,13 @@
   var workParentLink = document.querySelector('.nav__item--dropdown > .nav__link');
 
   function updateActiveSection() {
-    const scrollPos = window.scrollY + window.innerHeight / 3;
+    var scrollPos = window.scrollY + window.innerHeight / 3;
     var activeId = null;
 
     sections.forEach(function (section) {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
 
       if (scrollPos >= top && scrollPos < top + height) {
         activeId = id;
@@ -139,21 +141,50 @@
 
   // --- Modal: Open ---
   function openModal(card) {
-    var vimeoId = card.getAttribute('data-vimeo');
+    var youtubeId = card.getAttribute('data-youtube');
     var title = card.getAttribute('data-title');
     var year = card.getAttribute('data-year');
     var description = card.getAttribute('data-description');
     var credits = card.getAttribute('data-credits');
+    var linksData = card.getAttribute('data-links');
 
-    modalIframe.src =
-      'https://player.vimeo.com/video/' +
-      vimeoId +
-      '?autoplay=1&title=0&byline=0&portrait=0';
-    modalIframe.title = title + ' — Video Player';
+    // Show or hide video player based on whether there's a YouTube ID
+    if (youtubeId) {
+      modalIframe.src =
+        'https://www.youtube.com/embed/' +
+        youtubeId +
+        '?autoplay=1&rel=0';
+      modalIframe.title = title + ' — Video Player';
+      modalVideo.style.display = '';
+    } else {
+      modalIframe.src = '';
+      modalVideo.style.display = 'none';
+    }
+
     modalTitle.textContent = title;
     modalYear.textContent = year;
     modalDescription.textContent = description;
     modalCredits.textContent = credits;
+
+    // Build external links (Film Freeway, etc.)
+    modalLinks.innerHTML = '';
+    if (linksData) {
+      var links = linksData.split(',');
+      links.forEach(function (linkStr) {
+        var parts = linkStr.trim().split(':');
+        var label = parts[0];
+        var url = parts.slice(1).join(':');
+        if (label && url) {
+          var a = document.createElement('a');
+          a.href = url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'modal__ext-link';
+          a.textContent = label === 'filmfreeway' ? 'View on FilmFreeway' : label;
+          modalLinks.appendChild(a);
+        }
+      });
+    }
 
     lastFocusedCard = card;
     modal.classList.add('active');
@@ -184,6 +215,7 @@
     document.body.classList.remove('modal-open');
     // Stop video playback
     modalIframe.src = '';
+    modalVideo.style.display = '';
 
     // Return focus to the card that triggered the modal
     if (lastFocusedCard) {
