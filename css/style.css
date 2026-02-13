@@ -406,6 +406,12 @@ img {
   max-width: 480px;
 }
 
+/* Two-card grid for Theatre (centered, max-width per card) */
+.work__grid--two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 720px;
+}
+
 
 /* --- About Section --- */
 .about {
@@ -585,6 +591,12 @@ img {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
+}
+
+.modal.active .modal__backdrop {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -671,6 +683,7 @@ img {
   line-height: 1.8;
   padding-top: 16px;
   border-top: 1px solid var(--color-border);
+  margin-bottom: 28px;
 }
 
 .modal__links {
@@ -709,6 +722,135 @@ img {
 
 .modal__ext-link:hover::after {
   opacity: 1;
+}
+
+/* --- Modal: Badge --- */
+.modal__badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.modal__badge--soon {
+  background-color: var(--color-text-secondary);
+}
+
+/* --- Modal: Note --- */
+.modal__note {
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-accent);
+}
+
+/* --- Modal: Section Heading --- */
+.modal__section-heading {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+/* --- Modal: Festival / Awards List --- */
+.modal__festivals {
+  margin-bottom: 20px;
+}
+
+.modal__festival-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal__festival-list li {
+  font-size: 0.9375rem;
+  padding: 6px 0;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
+}
+
+.modal__festival-list li:last-child {
+  border-bottom: none;
+}
+
+/* --- Modal: Article Links --- */
+.modal__articles {
+  margin-bottom: 20px;
+}
+
+.modal__article-link {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--color-accent);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: color var(--transition-fast);
+}
+
+.modal__article-link:first-of-type {
+  padding-top: 0;
+}
+
+.modal__article-link:last-child {
+  border-bottom: none;
+}
+
+.modal__article-link:hover {
+  color: var(--color-accent-hover);
+}
+
+/* --- Modal: Spotify Link Variant --- */
+.modal__ext-link--spotify {
+  color: #1db954;
+}
+
+.modal__ext-link--spotify::after {
+  background-color: #1db954;
+}
+
+.modal__ext-link--spotify:hover {
+  color: #1aa34a;
+}
+
+/* --- Coming Soon Thumbnail --- */
+.work__thumbnail--coming-soon {
+  background-color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work__coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.work__coming-soon-text {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
 }
 
 
@@ -839,6 +981,10 @@ body.modal-open {
   .work__grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .work__grid--two {
+    max-width: none;
   }
 
   .about__grid {

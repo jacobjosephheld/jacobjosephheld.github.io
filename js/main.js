@@ -19,9 +19,7 @@
   var modalVideo = document.querySelector('.modal__video');
   var modalTitle = document.getElementById('modalTitle');
   var modalYear = document.getElementById('modalYear');
-  var modalDescription = document.getElementById('modalDescription');
-  var modalCredits = document.getElementById('modalCredits');
-  var modalLinks = document.getElementById('modalLinks');
+  var modalDetails = document.getElementById('modalDetails');
   var workCards = document.querySelectorAll('.work__card');
 
   // Track which card opened the modal for focus return
@@ -145,9 +143,6 @@
     var youtubeId = card.getAttribute('data-youtube');
     var title = card.getAttribute('data-title');
     var year = card.getAttribute('data-year');
-    var description = card.getAttribute('data-description');
-    var credits = card.getAttribute('data-credits');
-    var linksData = card.getAttribute('data-links');
 
     // Show or hide video player based on whether there's a YouTube ID
     if (youtubeId) {
@@ -169,33 +164,28 @@
         modalImage.style.display = 'block';
         modalVideo.style.display = '';
       } else {
+        // No image (e.g. Coming Soon cards) — hide video section entirely
         modalVideo.style.display = 'none';
       }
     }
 
+    // Set title and year
     modalTitle.textContent = title;
     modalYear.textContent = year;
-    modalDescription.textContent = description;
-    modalCredits.textContent = credits;
 
-    // Build external links (Film Freeway, etc.)
-    modalLinks.innerHTML = '';
-    if (linksData) {
-      var links = linksData.split(',');
-      links.forEach(function (linkStr) {
-        var parts = linkStr.trim().split(':');
-        var label = parts[0];
-        var url = parts.slice(1).join(':');
-        if (label && url) {
-          var a = document.createElement('a');
-          a.href = url;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          a.className = 'modal__ext-link';
-          a.textContent = label === 'filmfreeway' ? 'View on FilmFreeway' : label;
-          modalLinks.appendChild(a);
-        }
-      });
+    // Remove any previously cloned template content (everything after modalYear)
+    var detailChildren = Array.prototype.slice.call(modalDetails.children);
+    detailChildren.forEach(function (child) {
+      if (child !== modalTitle && child !== modalYear) {
+        modalDetails.removeChild(child);
+      }
+    });
+
+    // Clone and inject the card's <template> content
+    var tpl = card.querySelector('template.card-detail');
+    if (tpl) {
+      var clone = document.importNode(tpl.content, true);
+      modalDetails.appendChild(clone);
     }
 
     lastFocusedCard = card;
@@ -231,6 +221,14 @@
     modalImage.src = '';
     modalImage.style.display = 'none';
     modalVideo.style.display = '';
+
+    // Remove cloned template content (everything after title and year)
+    var detailChildren = Array.prototype.slice.call(modalDetails.children);
+    detailChildren.forEach(function (child) {
+      if (child !== modalTitle && child !== modalYear) {
+        modalDetails.removeChild(child);
+      }
+    });
 
     // Return focus to the card that triggered the modal
     if (lastFocusedCard) {
