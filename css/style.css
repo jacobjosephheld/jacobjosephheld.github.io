@@ -772,8 +772,15 @@ body.modal-open {
 
   .nav__toggle {
     display: flex;
+    color: var(--color-white);
   }
 
+  .nav__logo {
+    color: var(--color-white);
+  }
+
+  .nav--scrolled .nav__toggle,
+  .nav--scrolled .nav__logo,
   .nav__toggle.active {
     color: var(--color-text);
   }
