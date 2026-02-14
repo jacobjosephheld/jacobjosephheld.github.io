@@ -167,18 +167,23 @@
       modalIframe.title = title + ' — Video Player';
       modalVideo.style.display = '';
       modalIframe.style.display = '';
+      modalImage.src = '';
+      modalImage.alt = '';
       modalImage.style.display = 'none';
     } else {
       var cardImg = card.querySelector('.work__thumbnail-img');
       modalIframe.src = '';
       modalIframe.style.display = 'none';
       if (cardImg) {
-        modalImage.src = cardImg.src;
+        modalImage.src = cardImg.currentSrc || cardImg.src;
         modalImage.alt = cardImg.alt;
         modalImage.style.display = 'block';
         modalVideo.style.display = '';
       } else {
         // No image (e.g. Coming Soon cards) — hide video section entirely
+        modalImage.src = '';
+        modalImage.alt = '';
+        modalImage.style.display = 'none';
         modalVideo.style.display = 'none';
       }
     }
@@ -233,6 +238,7 @@
     modalIframe.src = '';
     modalIframe.style.display = '';
     modalImage.src = '';
+    modalImage.alt = '';
     modalImage.style.display = 'none';
     modalVideo.style.display = '';
 
