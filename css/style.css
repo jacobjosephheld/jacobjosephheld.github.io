@@ -241,7 +241,7 @@ img {
   text-align: center;
   padding: 160px 24px 0;
   position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.png');
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.jpg');
   background-size: cover;
   background-position: center;
   color: var(--color-white);
