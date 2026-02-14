@@ -35,9 +35,6 @@
     }
   }
 
-  window.addEventListener('scroll', updateNavScroll, { passive: true });
-  updateNavScroll();
-
 
   // --- Navigation: Active Section Highlight ---
   var workSectionIds = ['filmmaking', 'theatre', 'commercial'];
@@ -77,8 +74,25 @@
     }
   }
 
-  window.addEventListener('scroll', updateActiveSection, { passive: true });
-  updateActiveSection();
+  var isScrollTicking = false;
+
+  function runScrollUpdates() {
+    updateNavScroll();
+    updateActiveSection();
+  }
+
+  function onScroll() {
+    if (isScrollTicking) return;
+
+    isScrollTicking = true;
+    window.requestAnimationFrame(function () {
+      runScrollUpdates();
+      isScrollTicking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  runScrollUpdates();
 
 
   // --- Navigation: Mobile Toggle ---
