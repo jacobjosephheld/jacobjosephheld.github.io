@@ -241,10 +241,22 @@ img {
   text-align: center;
   padding: 160px 24px 0;
   position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.avif');
   background-size: cover;
   background-position: center;
   color: var(--color-white);
+}
+
+@supports not (background-image: url('../assets/images/wide_still.avif')) {
+  .hero {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.webp');
+  }
+}
+
+@supports not (background-image: url('../assets/images/wide_still.webp')) {
+  .hero {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.png');
+  }
 }
 
 .hero__content {
