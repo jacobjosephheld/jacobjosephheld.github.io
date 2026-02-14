@@ -292,23 +292,17 @@ img {
   text-align: center;
   padding: 160px 24px 0;
   position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.avif');
+  /* JPEG fallback for browsers that don't support image-set() */
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.jpg');
+  /* Modern browsers: automatic format negotiation */
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), image-set(
+    url('../assets/images/wide_still.avif') type('image/avif'),
+    url('../assets/images/wide_still.webp') type('image/webp'),
+    url('../assets/images/wide_still.jpg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: center;
   color: var(--color-white);
-}
-
-/* Fallback logic for hero background image formats */
-@supports not (background-image: url('../assets/images/wide_still.avif')) {
-  .hero {
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.webp');
-  }
-}
-
-@supports not (background-image: url('../assets/images/wide_still.webp')) {
-  .hero {
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('../assets/images/wide_still.png');
-  }
 }
 
 .hero__content {
