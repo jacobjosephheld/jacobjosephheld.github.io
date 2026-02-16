@@ -402,6 +402,11 @@ img {
   transition: transform var(--transition-slow);
 }
 
+/* Show top of image for specific thumbnails */
+.work__thumbnail-img--top {
+  object-position: 50% 12%;
+}
+
 .work__card:hover .work__thumbnail-img {
   transform: scale(1.05);
 }
