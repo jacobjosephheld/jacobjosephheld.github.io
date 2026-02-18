@@ -407,6 +407,17 @@ img {
   object-position: 50% 12%;
 }
 
+/* Larger zoom for specific thumbnails (e.g. Brecht still) */
+.work__thumbnail-img--zoom {
+  transform: scale(1.60);
+  transform-origin: center;
+}
+
+/* Ensure zoomed thumbnails scale further on hover */
+.work__card:hover .work__thumbnail-img--zoom {
+  transform: scale(2.00);
+}
+
 .work__card:hover .work__thumbnail-img {
   transform: scale(1.05);
 }
