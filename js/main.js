@@ -152,11 +152,57 @@
   initScrollAnimations();
 
 
+  // --- Theatre Curtain Animation (scroll-triggered) ---
+  function initCurtainAnimation() {
+    var theatreThumbnails = document.querySelectorAll('.work--theatre .work__thumbnail');
+
+    if (!theatreThumbnails.length) return;
+
+    if ('IntersectionObserver' in window) {
+      var curtainObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              // Delay slightly so the user sees the curtains before they open
+              setTimeout(function () {
+                entry.target.classList.add('curtains-open');
+              }, 400);
+              curtainObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.3,
+          rootMargin: '0px 0px -60px 0px',
+        }
+      );
+
+      theatreThumbnails.forEach(function (thumb) {
+        curtainObserver.observe(thumb);
+      });
+    } else {
+      // Fallback: just open curtains immediately
+      theatreThumbnails.forEach(function (thumb) {
+        thumb.classList.add('curtains-open');
+      });
+    }
+  }
+
+  initCurtainAnimation();
+
+
   // --- Modal: Open ---
   function openModal(card) {
     var youtubeId = card.getAttribute('data-youtube');
     var title = card.getAttribute('data-title');
     var year = card.getAttribute('data-year');
+    var isTheatre = !!card.closest('.work--theatre');
+
+    // Apply theatre arch modal style
+    modal.classList.remove('modal--theatre');
+    if (isTheatre) {
+      modal.classList.add('modal--theatre');
+    }
 
     // Show or hide video player based on whether there's a YouTube ID
     if (youtubeId) {
@@ -233,6 +279,7 @@
   // --- Modal: Close ---
   function closeModal() {
     modal.classList.remove('active');
+    modal.classList.remove('modal--theatre');
     document.body.classList.remove('modal-open');
     // Stop video playback and clear image
     modalIframe.src = '';

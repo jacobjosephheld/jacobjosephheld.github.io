@@ -413,6 +413,11 @@ img {
   transform-origin: center;
 }
 
+/* In theatre arch, the portrait aspect-ratio means less zoom is needed */
+.work--theatre .work__thumbnail-img--zoom {
+  transform: scale(1.1);
+}
+
 /* Ensure zoomed thumbnails scale further on hover */
 .work__card:hover .work__thumbnail-img--zoom {
   transform: scale(2.00);
@@ -895,6 +900,301 @@ img {
   color: #1aa34a;
 }
 
+/* --- Theatre: Arch Thumbnails with Curtains --- */
+.work--theatre .work__card {
+  overflow: visible;
+  background: transparent;
+}
+
+/* Disable all hover effects on theatre cards to prevent glitches */
+.work--theatre .work__card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.work--theatre .work__card:hover .work__thumbnail-img,
+.work--theatre .work__card:hover .work__thumbnail-img--zoom {
+  transform: scale(1.1);
+}
+
+.work--theatre .work__card:hover .work__overlay {
+  background: rgba(0, 0, 0, 0);
+}
+
+.work--theatre .work__card:hover .work__play {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.work--theatre .work__thumbnail {
+  aspect-ratio: 3 / 4;
+  border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(184, 134, 11, 0.35);
+  border-bottom: none;
+  cursor: pointer;
+}
+
+/* Remove the old ::before keystone border */
+.work--theatre .work__thumbnail::before {
+  display: none;
+}
+
+/* Curtain panels — improved fabric look */
+.work--theatre .curtain {
+  position: absolute;
+  top: 0;
+  width: 51%;
+  height: 100%;
+  z-index: 10;
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.work--theatre .curtain--left {
+  left: 0;
+  transform-origin: left center;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(0,0,0,0.06) 3px,
+      rgba(255,255,255,0.02) 6px,
+      rgba(0,0,0,0.1) 10px,
+      rgba(255,255,255,0.03) 14px
+    ),
+    linear-gradient(
+      105deg,
+      #5c0d18 0%,
+      #8a1a2a 12%,
+      #6e1222 24%,
+      #961e30 36%,
+      #7a1525 48%,
+      #8a1a2a 60%,
+      #5c0d18 72%,
+      #7a1525 84%,
+      #6e1222 100%
+    );
+  box-shadow: inset -8px 0 16px rgba(0,0,0,0.3);
+}
+
+.work--theatre .curtain--right {
+  right: 0;
+  transform-origin: right center;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.06) 0px,
+      rgba(255,255,255,0.03) 3px,
+      rgba(0,0,0,0.1) 6px,
+      rgba(255,255,255,0.02) 10px,
+      rgba(0,0,0,0.06) 14px
+    ),
+    linear-gradient(
+      -105deg,
+      #5c0d18 0%,
+      #8a1a2a 12%,
+      #6e1222 24%,
+      #961e30 36%,
+      #7a1525 48%,
+      #8a1a2a 60%,
+      #5c0d18 72%,
+      #7a1525 84%,
+      #6e1222 100%
+    );
+  box-shadow: inset 8px 0 16px rgba(0,0,0,0.3);
+}
+
+/* Fabric fold vertical highlights — no extra pseudo-elements needed */
+.work--theatre .curtain::before {
+  display: none;
+}
+
+/* Shadow at bottom of each curtain panel */
+.work--theatre .curtain::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.25));
+  pointer-events: none;
+}
+
+/* Valance / pelmet across the top */
+.work--theatre .curtain-valance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 12;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      #6e1222 0%,
+      #8a1a2a 40%,
+      #7a1525 70%,
+      #5c0d18 100%
+    );
+  border-bottom: 3px solid rgba(184, 134, 11, 0.5);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transition: opacity 0.5s ease 0.4s;
+}
+
+/* Scalloped fringe on valance */
+.work--theatre .curtain-valance::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 8%;
+  right: 8%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 4px,
+    rgba(184, 134, 11, 0.45) 4px,
+    rgba(184, 134, 11, 0.45) 5px,
+    transparent 5px,
+    transparent 14px
+  );
+  pointer-events: none;
+}
+
+/* Gold tie-backs */
+.work--theatre .curtain-tassel {
+  display: none;
+}
+
+/* ---- Curtains OPEN state ---- */
+.work--theatre .curtains-open .curtain--left {
+  transform: scaleX(0);
+}
+
+.work--theatre .curtains-open .curtain--right {
+  transform: scaleX(0);
+}
+
+.work--theatre .curtains-open .curtain-valance {
+  opacity: 0;
+}
+
+/* Once curtains are open, allow hover interactions on overlay */
+.work--theatre .curtains-open ~ .work__overlay,
+.work--theatre .curtains-open .work__overlay {
+  pointer-events: auto;
+}
+
+/* Theatre image scaling */
+.work--theatre .work__thumbnail-img--zoom {
+  transform: scale(1.1);
+  transform-origin: center;
+}
+
+
+/* --- Theatre Arched Modal --- */
+.modal--theatre .modal__content {
+  max-width: 520px;
+  width: 90%;
+  border-radius: 260px 260px 8px 8px;
+  overflow: hidden;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal--theatre .modal__video {
+  aspect-ratio: auto;
+  background: var(--color-text);
+  border-radius: 0;
+  height: 240px;
+  min-height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal--theatre .modal__video img,
+.modal--theatre .modal__img-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.modal--theatre .modal__close {
+  top: 60px;
+  right: 16px;
+  z-index: 20;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: 36px;
+  height: 36px;
+}
+
+.modal--theatre .modal__details {
+  padding: 40px 36px 32px;
+  text-align: center;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.modal--theatre .modal__title {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+.modal--theatre .modal__year {
+  margin-bottom: 14px;
+  font-size: 0.8125rem;
+}
+
+.modal--theatre .modal__description {
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.modal--theatre .modal__credits {
+  text-align: left;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.modal--theatre .modal__note {
+  text-align: left;
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+}
+
+.modal--theatre .modal__badge {
+  margin-bottom: 10px;
+}
+
+.modal--theatre .modal__links {
+  justify-content: center;
+}
+
+
+/* --- Commercial: Vertical Rectangular Thumbnails --- */
+.work--commercial .work__thumbnail {
+  aspect-ratio: 3 / 4;
+}
+
+.work--commercial .work__grid--single {
+  max-width: 400px;
+}
+
+
 /* --- Coming Soon Thumbnail --- */
 .work__thumbnail--coming-soon {
   background-color: var(--color-text);
@@ -1056,6 +1356,11 @@ body.modal-open {
     max-width: none;
   }
 
+  .work--theatre .work__grid--two {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
   .about__grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1085,6 +1390,25 @@ body.modal-open {
   .modal__content {
     width: 95%;
     max-height: 95vh;
+  }
+
+  .modal--theatre .modal__content {
+    max-width: 95%;
+    border-radius: 180px 180px 8px 8px;
+  }
+
+  .modal--theatre .modal__video {
+    height: 180px;
+    min-height: 140px;
+  }
+
+  .modal--theatre .modal__close {
+    top: 40px;
+    right: 12px;
+  }
+
+  .modal--theatre .modal__details {
+    padding: 32px 28px 28px;
   }
 
   .modal__details {
