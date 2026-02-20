@@ -370,6 +370,19 @@ img {
   background-color: var(--color-bg-alt);
 }
 
+.work__category {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+  letter-spacing: 0.02em;
+}
+
+.work__category + .work__grid {
+  margin-bottom: 64px;
+}
+
 .work__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
