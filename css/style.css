@@ -1148,8 +1148,8 @@ img {
 }
 
 .modal--theatre .modal__close {
-  top: 60px;
-  right: 16px;
+  top: 180px;
+  right: 28px;
   z-index: 20;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(8px);
@@ -1678,8 +1678,8 @@ body.modal-open {
   }
 
   .modal--theatre .modal__close {
-    top: 40px;
-    right: 12px;
+    top: 130px;
+    right: 16px;
   }
 
   .modal--theatre .modal__details {
