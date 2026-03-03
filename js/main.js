@@ -37,7 +37,7 @@
 
 
   // --- Navigation: Active Section Highlight ---
-  var workSectionIds = ['filmmaking', 'theatre', 'commercial'];
+  var workSectionIds = ['filmmaking', 'theatre', 'commercial', 'podcast'];
   var workParentLink = document.querySelector('.nav__item--dropdown > .nav__link');
 
   function updateActiveSection() {
