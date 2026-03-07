@@ -835,6 +835,10 @@ img {
   background-color: var(--color-text-secondary);
 }
 
+.modal__badge--sold-out {
+  background-color: #c0392b;
+}
+
 /* --- Modal: Note --- */
 .modal__note {
   font-size: 0.9375rem;
