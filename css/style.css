@@ -483,17 +483,24 @@ img {
 
 .work__award-banner {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  left: 12px;
   z-index: 2;
-  display: inline-block;
-  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: calc(100% - 24px);
+  padding: 6px 11px;
   font-size: 0.675rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.11em;
+  line-height: 1;
+  white-space: nowrap;
   text-transform: uppercase;
   color: var(--color-white);
-  background-color: rgba(184, 134, 11, 0.92);
+  background: linear-gradient(135deg, #e0b84f 0%, #b8860b 100%);
+  border: 1px solid rgba(255, 232, 169, 0.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
   border-radius: 2px;
 }
 
