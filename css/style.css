@@ -481,6 +481,22 @@ img {
   transform: scale(1);
 }
 
+.work__award-banner {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 0.675rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background-color: rgba(184, 134, 11, 0.92);
+  border-radius: 2px;
+}
+
 .work__info {
   padding: 20px 16px;
 }
