@@ -437,6 +437,16 @@ img {
   transform: scale(1.1);
 }
 
+/* Lower this specific theatre image within the frame */
+.work__card--image-lower .work__thumbnail-img--zoom {
+  object-position: 50% 100%;
+  transform: translateY(16%) scale(1.1);
+}
+
+.work__card--image-lower:hover .work__thumbnail-img--zoom {
+  transform: translateY(16%) scale(2.00);
+}
+
 /* Ensure zoomed thumbnails scale further on hover */
 .work__card:hover .work__thumbnail-img--zoom {
   transform: scale(2.00);
@@ -483,8 +493,8 @@ img {
 
 .work__award-banner {
   position: absolute;
-  top: 12px;
   left: 12px;
+  bottom: 12px;
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -871,6 +881,55 @@ img {
   margin-bottom: 20px;
   padding-left: 16px;
   border-left: 2px solid var(--color-accent);
+}
+
+.modal__publication {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+.modal__quote {
+  font-size: 0.96rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 0 0 22px;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-accent);
+  font-style: italic;
+  text-align: left;
+}
+
+.modal__review-banner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 24px;
+  padding: 10px 18px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-white);
+  background: linear-gradient(135deg, #e0b84f 0%, #b8860b 100%);
+  border: 1px solid rgba(255, 232, 169, 0.55);
+  border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+}
+
+.modal__review-banner:hover,
+.modal__review-banner:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24);
 }
 
 /* --- Modal: Section Heading --- */
