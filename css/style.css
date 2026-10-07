@@ -420,6 +420,11 @@ img {
   object-position: 50% 12%;
 }
 
+/* Slightly favor the top of an image without using the tightest crop */
+.work__thumbnail-img--upper {
+  object-position: 50% 31%;
+}
+
 /* Show bottom of image for specific thumbnails */
 .work__thumbnail-img--bottom {
   object-position: 50% 100%;
